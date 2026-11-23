@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>焦虑自评量表（SAS）</title>
+<style>
+:root{--bg:#eef4f3;--card:#fff;--tx:#1d2b29;--sub:#62756f;--pri:#2a8f7f;--pri2:#5bb8c9;--pri-t:#fff;--bd:#dce6e3;--sel:#e3f4f0;--warn:#fff6e5;--shadow:0 6px 24px rgba(30,80,70,.08);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1817;--card:#1a2726;--tx:#e6efed;--sub:#97aaa6;--pri:#3fb5a3;--pri2:#4aa3b5;--pri-t:#08201c;--bd:#2c3d3a;--sel:#21403b;--warn:#352d1a;--shadow:none}}
+:root[data-theme="dark"]{--bg:#0f1817;--card:#1a2726;--tx:#e6efed;--sub:#97aaa6;--pri:#3fb5a3;--pri2:#4aa3b5;--pri-t:#08201c;--bd:#2c3d3a;--sel:#21403b;--warn:#352d1a;--shadow:none}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.7 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:660px;margin:0 auto;padding:18px 16px 44px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:24px 22px;box-shadow:var(--shadow);animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero{text-align:center;padding-bottom:6px}
+.logo{width:72px;height:72px;margin:0 auto 10px;border-radius:50%;background:linear-gradient(135deg,var(--pri),var(--pri2));display:flex;align-items:center;justify-content:center;font-size:36px}
+h1{font-size:25px;margin:0 0 4px}h2{font-size:19px;margin:0 0 8px}h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}.sub{color:var(--sub);font-size:14px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.facts div{background:var(--sel);border-radius:14px;padding:10px 4px;text-align:center;font-size:12px;color:var(--sub)}
+.facts b{display:block;font-size:20px;color:var(--pri)}
+.note{background:var(--warn);border-radius:12px;padding:10px 14px;font-size:13px;margin-top:16px;color:var(--sub)}
+button{font:inherit;cursor:pointer}
+.btn{display:block;width:100%;margin-top:18px;padding:14px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--pri),var(--pri2));color:var(--pri-t);font-weight:600;font-size:17px;transition:transform .1s}
+.btn:active{transform:scale(.98)}
+.bar{height:8px;background:var(--bd);border-radius:8px;overflow:hidden;margin:8px 0 6px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pri),var(--pri2));border-radius:8px;transition:width .3s}
+.cheer{font-size:13px;color:var(--pri);min-height:22px;margin-bottom:12px}
+.q{font-size:20px;font-weight:600;margin:0 0 12px;min-height:68px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px 16px;margin-top:10px;border:1.5px solid var(--bd);border-radius:14px;background:transparent;color:var(--tx);transition:all .15s}
+.opt:hover{border-color:var(--pri)}
+.opt .em{font-size:22px}.opt.on{border-color:var(--pri);background:var(--sel);transform:scale(1.015)}
+.nav{margin-top:14px}.nav button{background:none;border:0;color:var(--sub);padding:6px 2px}.nav button:disabled{opacity:.3}
+.gauge{position:relative;width:200px;height:200px;margin:4px auto}
+.gauge svg{transform:rotate(-90deg)}
+.gauge .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score{font-size:54px;font-weight:700;line-height:1}.tag{font-size:13px;color:var(--sub)}
+.res-h{text-align:center}
+.lvbadge{display:inline-block;padding:4px 16px;border-radius:20px;color:#fff;font-weight:600;margin-top:4px}
+.dim{margin:10px 0}.dim .t{display:flex;justify-content:space-between;font-size:14px}
+.dim .b{height:10px;background:var(--bd);border-radius:6px;overflow:hidden;margin-top:4px}
+.dim .b i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pri),var(--pri2));transition:width .9s ease}
+ul.tips{padding-left:20px;margin:6px 0}ul.tips li{margin:5px 0}
+.row{display:flex;gap:10px}.row .btn{margin-top:14px;font-size:15px}.btn.ghost{background:transparent;color:var(--pri);border:1.5px solid var(--pri)}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div id="intro" class="card hero">
+  <div class="logo">🌿</div>
+  <h1>焦虑自评量表 SAS</h1>
+  <p class="sub">Zung Self-Rating Anxiety Scale · 国际通用的焦虑症状筛查工具</p>
+  <div class="facts"><div><b>20</b>道题目</div><div><b>3</b>分钟</div><div><b>1</b>周回顾</div></div>
+  <p style="text-align:left">请回想<b>最近一周</b>的状态，选出最符合自己的选项。没有对错之分，跟着第一感觉走就好。找个安静的地方，深呼吸一下，我们开始吧。</p>
+  <button class="btn" onclick="start()">开始测评</button>
+  <div class="note" style="text-align:left">本量表由 W.W.K. Zung 于 1971 年编制，仅用于自我筛查，不能代替医生诊断。所有计算均在您的设备本地完成，不会上传任何数据。</div>
+ </div>
+
+ <div id="quiz" class="card hide">
+  <div class="sub" style="display:flex;justify-content:space-between"><span id="cnt"></span><span id="pct"></span></div>
+  <div class="bar"><i id="prog"></i></div>
+  <div class="cheer" id="cheer"></div>
+  <p class="q" id="qt"></p>
+  <div id="opts"></div>
+  <div class="nav"><button id="prev" onclick="prev()">← 上一题</button></div>
+ </div>
+
+ <div id="res" class="card hide">
+  <div class="res-h">
+   <p class="sub">您的 SAS 测评报告</p>
+   <div class="gauge">
+    <svg width="200" height="200" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--bd)" stroke-width="10"/><circle id="arc" cx="60" cy="60" r="52" fill="none" stroke="#2a8f7f" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset 1.2s ease"/></svg>
+    <div class="mid"><div class="score" id="sc">0</div><div class="tag">标准分 / 100</div></div>
+   </div>
+   <span class="lvbadge" id="lv"></span>
+  </div>
+  <p id="adv" style="margin-top:16px"></p>
+  <h3>📊 症状分布（仅供参考）</h3>
+  <div id="dims"></div>
+  <h3>💡 给您的小建议</h3>
+  <ul class="tips" id="tips"></ul>
+  <p class="sub" id="raw" style="margin-top:14px"></p>
+  <div class="note">标准分 = 粗分 × 1.25（取整数部分）。中国常模以 50 分为分界：&lt;50 无明显焦虑，50–59 轻度，60–69 中度，≥70 重度。症状分布为题目的简单归类，不属于量表官方因子。若焦虑持续、影响睡眠或生活，请到正规医院心理科或精神科就诊。</div>
+  <div class="row"><button class="btn" onclick="start()">重新测评</button><button class="btn ghost" onclick="copyR()" id="cp">复制结果</button></div>
+ </div>
+</div>
+
+<script>
+var Q=["我觉得比平常容易紧张和着急","我无缘无故地感到害怕","我容易心里烦乱或觉得惊恐","我觉得我可能将要发疯","我觉得一切都很好，也不会发生什么不幸","我手脚发抖打颤","我因为头痛、颈痛和背痛而苦恼","我感觉容易衰弱和疲乏","我觉得心平气和，并且容易安静坐着","我觉得心跳得很快","我因为一阵阵头晕而苦恼","我有晕倒发作，或觉得要晕倒似的","我呼气吸气都感到很容易","我的手脚麻木和刺痛","我因为胃痛和消化不良而苦恼","我常常要小便","我的手常常是干燥温暖的","我脸红发热","我容易入睡并且一夜睡得很好","我做噩梦"];
+var REV=[5,9,13,17,19];
+var OPT=[["☀️","没有或很少时间"],["🌤️","小部分时间"],["⛅","相当多时间"],["🌧️","绝大部分或全部时间"]];
+var CHEER={4:"好的开始，慢慢来～",9:"已经完成近一半了，继续保持！",14:"过半啦，您做得很棒！",18:"马上就要完成了，加油！"};
+var GR=[["情绪感受",[1,2,3,4,5,9]],["躯体紧张",[6,7,8,11,14,15,16]],["心跳呼吸与睡眠",[10,12,13,17,18,19,20]]];
+var ans=[],cur=0,rep="";
+function $(i){return document.getElementById(i)}
+function show(id){["intro","quiz","res"].forEach(function(x){$(x).classList.toggle("hide",x!==id)});window.scrollTo(0,0)}
+function start(){ans=[];cur=0;show("quiz");render()}
+function render(){
+ $("cnt").textContent="第 "+(cur+1)+" / 20 题";
+ $("pct").textContent=Math.round(cur/20*100)+"%";
+ $("prog").style.width=(cur/20*100)+"%";
+ $("cheer").textContent=CHEER[cur]||"";
+ $("qt").textContent=(cur+1)+". "+Q[cur];
+ $("prev").disabled=cur===0;
+ var h="";
+ OPT.forEach(function(o,i){h+='<button class="opt'+(ans[cur]===i+1?' on':'')+'" onclick="pick('+(i+1)+')">'+o[1]+'</button>'});
+ $("opts").innerHTML=h;
+}
+function pick(v){ans[cur]=v;render();setTimeout(function(){if(cur<19){cur++;render()}else finish()},240)}
+function prev(){if(cur>0){cur--;render()}}
+function sc(i){var v=ans[i-1];return REV.indexOf(i)>-1?5-v:v}
+function finish(){
+ var raw=0,i;for(i=1;i<=20;i++)raw+=sc(i);
+ var std=Math.floor(raw*1.25),lv,col,adv,tips;
+ if(std<50){lv="无明显焦虑";col="#2f9e6e";adv="您最近一周的焦虑水平处于正常范围，身心状态比较平稳。";tips=["保持规律作息，每晚尽量睡足 7–8 小时","每周 3 次、每次 30 分钟的有氧运动有助于稳定情绪","留意压力来源，给自己留出放松和社交的时间"]}
+ else if(std<60){lv="轻度焦虑";col="#d9a521";adv="您可能存在轻度焦虑情绪，这在压力较大的阶段很常见，通常可以通过自我调节得到改善。";tips=["尝试 4-7-8 呼吸法：吸气 4 秒、屏息 7 秒、呼气 8 秒","睡前一小时远离手机，减少咖啡因摄入","把担心的事写下来，区分“能做的”和“暂时无法控制的”","如症状持续两周以上，建议咨询专业人士"]}
+ else if(std<70){lv="中度焦虑";col="#e07b39";adv="您的焦虑程度已较明显，可能开始影响到睡眠、工作或人际关系。";tips=["建议尽早预约心理咨询师或精神科医生做进一步评估","和家人或信任的朋友聊聊，不必独自承担","暂时减少不必要的压力来源，保证基本的休息","配合呼吸放松、渐进式肌肉放松练习"]}
+ else{lv="重度焦虑";col="#d9534f";adv="您的焦虑程度较高，身心可能已经承受了很大压力。这不是您的错，也是可以被帮助的。";tips=["请尽快前往正规医院心理科或精神科就诊","告诉身边可信赖的人您现在的感受","若出现强烈的不安全感或伤害自己的念头，请立即联系家人或拨打当地心理援助热线、急救电话"]}
+ $("lv").textContent=lv;$("lv").style.background=col;$("adv").textContent=adv;
+ $("tips").innerHTML=tips.map(function(t){return"<li>"+t+"</li>"}).join("");
+ $("raw").textContent="粗分："+raw+"（范围 20–80），标准分范围 25–100。";
+ var dh="";GR.forEach(function(g){var s=0;g[1].forEach(function(k){s+=sc(k)-1});var p=Math.round(s/(g[1].length*3)*100);dh+='<div class="dim"><div class="t"><span>'+g[0]+'</span><span>'+p+'%</span></div><div class="b"><i data-w="'+p+'"></i></div></div>'});
+ $("dims").innerHTML=dh;
+ rep="我的焦虑自评量表（SAS）结果：标准分 "+std+"，"+lv+"（仅供参考）";
+ $("cp").textContent="复制结果";
+ show("res");
+ var arc=$("arc");arc.setAttribute("stroke",col);arc.style.strokeDashoffset=326.7;
+ setTimeout(function(){arc.style.strokeDashoffset=326.7*(1-Math.min(1,Math.max(0,(std-25)/75)));
+  document.querySelectorAll(".dim i").forEach(function(e){e.style.width=e.dataset.w+"%"})},60);
+ var t0=null;function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1100);$("sc").textContent=Math.round(std*k);if(k<1)requestAnimationFrame(step)}requestAnimationFrame(step);
+}
+function copyR(){
+ var done=function(){$("cp").textContent="已复制 ✓"};
+ try{navigator.clipboard.writeText(rep).then(done,function(){fb()})}catch(e){fb()}
+ function fb(){var a=document.createElement("textarea");a.value=rep;document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(e){}document.body.removeChild(a)}
+}
+</script>
+</body>
+</html>
